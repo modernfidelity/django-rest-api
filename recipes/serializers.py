@@ -15,10 +15,10 @@ class RecipeSerializer(serializers.HyperlinkedModelSerializer):
 
 
 # Users
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    snippets = serializers.HyperlinkedRelatedField(queryset=Recipe.objects.all(), view_name='recipe-detail',
-                                                   many=True)
-
-    class Meta:
-        model = User
-        fields = ('url', 'username', 'recipe')
+# class UserSerializer(serializers.HyperlinkedModelSerializer):
+#     snippets = serializers.HyperlinkedRelatedField(queryset=Recipe.objects.all(), view_name='recipe-detail',
+#                                                    many=True)
+#
+#     class Meta:
+#         model = User
+#         fields = ('url', 'username', 'recipe')
