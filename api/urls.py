@@ -17,12 +17,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers, serializers, viewsets
 from recipes.views import RecipeViewSet
-from articles import views
+from articles.views import ArticleViewSet
 
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'recipes', RecipeViewSet)
+router.register(r'articles', ArticleViewSet)
 # router.register(r'articles', views.ArticlesViewSet)
 
 urlpatterns = [

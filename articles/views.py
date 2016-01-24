@@ -1,8 +1,9 @@
 from django.shortcuts import render
 
+from rest_framework import generics, viewsets, permissions
 from serializers import ArticleSerializer
 from models import Article
-from rest_framework import generics, viewsets, permissions
+from permissions import IsOwnerOrReadOnly
 
 
 # Create your views here.
@@ -26,3 +27,6 @@ class ArticleViewSet(viewsets.ModelViewSet):
 
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly,)
+

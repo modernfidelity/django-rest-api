@@ -5,9 +5,12 @@ from models import Article
 
 # Serializers define the API representation.
 class ArticleSerializer(serializers.ModelSerializer):
+
+    owner = serializers.ReadOnlyField(source='owner.username')
+
     class Meta:
         model = Article
-        fields = ('id', 'title', 'strapline')
+        fields = ('id', 'title', 'strapline', 'owner')
 
 
 # ViewSets define the view behavior.

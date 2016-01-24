@@ -9,8 +9,10 @@ from django.utils import timezone
 
 class Article(models.Model):
 
-
     created = models.DateTimeField(auto_now_add=True)
+
+    owner = models.ForeignKey('auth.User', related_name='articles', null=True, blank=True)
+
 
     # published_date = models.DateTimeField(
     #     blank=True, null=True)
