@@ -11,7 +11,8 @@ class Article(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
 
-    owner = models.ForeignKey('auth.User', related_name='articles', null=True, blank=True)
+    owner = models.ForeignKey('auth.User', related_name='articles')
+
 
 
     # published_date = models.DateTimeField(

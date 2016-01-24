@@ -10,11 +10,15 @@ from permissions import IsOwnerOrReadOnly
 
 
 class ArticleList(generics.ListAPIView):
+    """
+    """
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
 
 class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    """
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
@@ -22,7 +26,7 @@ class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
 # ViewSets define the view behavior.
 class ArticleViewSet(viewsets.ModelViewSet):
     """
-
+    Article content type viewset default
     """
 
     queryset = Article.objects.all()
@@ -30,3 +34,5 @@ class ArticleViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,
                           IsOwnerOrReadOnly,)
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
