@@ -12,7 +12,10 @@ Clone the repo and then run the following commands.
 
 ## Docker
 
+You will need to build the image and run a container.
+
 The docker build exposes port 8002 and is built on the official Ubuntu image.
+
 
 ## Reference
 
