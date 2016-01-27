@@ -18,15 +18,31 @@ from django.contrib import admin
 from rest_framework import routers, serializers, viewsets
 from recipes.views import RecipeViewSet
 from articles.views import ArticleViewSet
+from settings import API_VERSION
+# from views import hello_word
+
+from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+
+
+
+
+@api_view(['GET'])
+@permission_classes((AllowAny,))
+def get_api_version(request):
+    return Response({API_VERSION})
 
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'recipes', RecipeViewSet)
 router.register(r'articles', ArticleViewSet)
-# router.register(r'articles', views.ArticlesViewSet)
+
 
 urlpatterns = [
+
+    url(r'^version', get_api_version, name='get_api_version'),
 
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),

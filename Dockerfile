@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:14.04
 
 MAINTAINER @modernfidelity
 
@@ -8,10 +8,11 @@ MAINTAINER @modernfidelity
 
 
 # Update packages
-RUN apt-get update -y
+RUN apt-get update -y && apt-get upgrade -y
 
 # Install Python Setuptools and some other tools for working with this container if attached to it
-RUN apt-get install -y tar git curl vim wget dialog net-tools build-essential
+# RUN apt-get install -y tar git curl vim wget dialog net-tools build-essential
+RUN apt-get install -y git curl vim wget net-tools build-essential
 RUN apt-get install -y python python-dev python-distribute python-pip supervisor
 
 # Copy the contents of this directory over to the container at location /src
@@ -29,6 +30,9 @@ EXPOSE  8002
 
 # Set the working directorly
 WORKDIR /src
+
+RUN python manage.py collectstatic --noinput
+
 
 # Command to execute when we run the contaner. This is the default for sudo docker run for this image
 CMD supervisord -c /src/supervisord.conf
