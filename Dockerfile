@@ -25,7 +25,7 @@ RUN cd /src && pip install -r /src/requirements.txt
 
 
 # The port we are exposing needs to match the port we are binding GUNICORN too.
-# See the supervisord.conf file for the proper conf #
+# See the reference-supervisord.conf file for the proper conf #
 EXPOSE  8002
 
 # Set the working directorly
