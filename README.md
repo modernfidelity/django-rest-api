@@ -17,6 +17,34 @@ You will need to build the image and run a container.
 The docker build exposes port 8002 and is built on the official Ubuntu image.
 
 
+## Useful Docker Commands (use with care)
+
+- View docker images
+```
+docker images
+```
+- List actively running images (add -l to include stopped containers)
+```
+docker ps
+```
+- View container logs
+```
+docker logs -f <containerID>
+```
+- Stop container
+```
+docker stop <containerID>
+```
+- Delete non tagged images
+```
+for i in `docker images|grep \<none\>|awk '{print $3}'`;do docker rmi $i;done
+```
+- Delete containers
+```
+docker rm -f `docker ps --no-trunc -a -q`
+```
+
+
 ## Reference
 
  - [Ubuntu](http://www.ubuntu.com/ "Ubuntu")
