@@ -2,11 +2,11 @@
 Django REST API
 ===============
 
-This is a simple starting point when developing REST APIs in python using the django rest framework (3.x)
+This is a simple starting point when developing REST APIs in python using the Django REST Framework (3.x)
 
 ## Install
 
-Clone the repo and then run the following commands.
+Clone the repo and then run the following commands. (local builds)
 
 > pip install -r ./requirements.txt
 
@@ -14,7 +14,10 @@ Clone the repo and then run the following commands.
 
 You will need to build the image and run a container.
 
-The docker build exposes port 8002 and is built on the official Ubuntu image.
+The docker build exposes Nginx on port 9000 which passes requests to Gunicorn (WSGI) and in turns 
+handle the Django application.
+ 
+It is built on the official Ubuntu 14.04 LTS image.
 
 
 ## Useful Docker Commands (use with care)
