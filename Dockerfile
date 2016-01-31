@@ -14,12 +14,14 @@ MAINTAINER @modernfidelity
 
 
 # Update packages
-RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get update && apt-get upgrade -y
 
 # Install Python Setuptools and some other tools for working with this container if attached to it
-# RUN apt-get install -y tar git curl vim wget dialog net-tools build-essential
-RUN apt-get install -y nginx gunicorn git curl vim wget net-tools build-essential
-RUN apt-get install -y python python-dev python-distribute python-pip python-virtualenv supervisor
+# RUN apt-get install -y tar git curl vim wget dialog net-tools build-essential python-distribute
+RUN apt-get install -y nginx supervisor \
+                        python python-dev python-pip python-virtualenv
+#RUN apt-get install -y curl build-essential
+#RUN apt-get install -y python python-dev python-pip python-virtualenv
 
 # Copy the contents of this directory over to the container at location /src
 ADD . /src
@@ -38,9 +40,9 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 
 # Setup supervisord
-RUN mkdir -p /var/log/supervisor
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
+#RUN mkdir -p /var/log/supervisor
+#COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+#COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
 
 
 
