@@ -1,7 +1,7 @@
 #
-# DJANGO PYTHON BUILD
+# DJANGO PYTHON DOCKERFILE
 #
-# The following creates a
+# The following runs a python Django application using Nginx, Gunicorn & Supervisord
 #
 
 FROM ubuntu:14.04
@@ -18,10 +18,10 @@ RUN apt-get update && apt-get upgrade -y
 
 # Install Python Setuptools and some other tools for working with this container if attached to it
 # RUN apt-get install -y tar git curl vim wget dialog net-tools build-essential python-distribute
+# RUN apt-get install -y curl build-essential
 RUN apt-get install -y nginx supervisor \
                         python python-dev python-pip python-virtualenv
-#RUN apt-get install -y curl build-essential
-#RUN apt-get install -y python python-dev python-pip python-virtualenv
+
 
 # Copy the contents of this directory over to the container at location /src
 ADD . /src
@@ -45,7 +45,6 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 #COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
 
 
-
 # The port we are exposing needs to match the port we are binding NGINX too.
 # Nginx then talks to Gunicorn which runs the django WSGI
 EXPOSE  9000
@@ -53,10 +52,7 @@ EXPOSE  9000
 # Set the working directorly
 WORKDIR /src
 
-#RUN python manage.py collectstatic --noinput
-
-
 # Start processes. (Command to execute when we run the contaner)
-CMD supervisord -c /src/supervisord.conf
+CMD supervisord -c /src/deployment/supervisord.conf
 
 #CMD ["/usr/bin/supervisord"]
