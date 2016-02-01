@@ -20,12 +20,10 @@ from recipes.views import RecipeViewSet
 from rest_framework import routers
 from settings import API_VERSION
 
-# from views import hello_word
-
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
-
+from rest_framework_jwt.views import obtain_jwt_token
 
 @api_view(['GET'])
 @permission_classes((AllowAny,))
@@ -40,10 +38,18 @@ router.register(r'articles', ArticleViewSet)
 
 urlpatterns = [
 
+    # Generics
     url(r'^version', get_api_version, name='get_api_version'),
-
     url(r'^', include(router.urls)),
+
+    # Admin
     url(r'^admin/', admin.site.urls),
+
+    # Docs
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^docs/', include('rest_framework_swagger.urls'))
+    url(r'^docs/', include('rest_framework_swagger.urls')),
+
+    # JWT Auth Token
+    url(r'^api-token-auth/', obtain_jwt_token),
+
 ]
