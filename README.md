@@ -14,8 +14,22 @@ Clone the repo and then run the following commands. (local builds)
 
 For local development on Mac OSX make sure you have command line tools (otherwise Pillow install may fail) :
 
-
 > xcode-select --install
+
+
+## AWS s3 Filesystem
+
+The application uses the following packages to store "MEDIA_ROOT" & "STATIC_ROOT" assets in the cloud : 
+
+ - [http://django-storages.readthedocs.org/en/latest/](http://django-storages.readthedocs.org/en/latest/)
+ - [(AWS) https://pypi.python.org/pypi/boto/](https://pypi.python.org/pypi/boto/)
+
+*Also the s3 bucket that will be used will need to have CORS configuration enabled.* 
+
+## JWT Authentication (clients)
+
+The application uses the following : [http://getblimp.github.io/django-rest-framework-jwt/#usage](http://getblimp.github.io/django-rest-framework-jwt/#usage)
+
 
 ## Docker
 
