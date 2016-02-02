@@ -10,7 +10,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ('id', 'title', 'strapline', 'owner')
+        fields = ('id', 'title', 'strapline', 'owner', 'picture')
 
 
 # ViewSets define the view behavior.
