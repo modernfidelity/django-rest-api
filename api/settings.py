@@ -32,6 +32,8 @@ ALLOWED_HOSTS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+
+    # CORE
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     # CONTRIB
     'rest_framework',
     'rest_framework_swagger',
+    'debug_toolbar',
 
     # CUSTOM
     'articles',
@@ -109,11 +112,11 @@ DATABASES = {
 
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'DB_NAME',
-    #     'USER': 'DB_USER',
-    #     'PASSWORD': 'DB_PASSWORD',
-    #     'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-    #     'PORT': '3306',
+    #     'NAME': os.environ.get('DRF_DATABASE_NAME', ''),
+    #     'USER': os.environ.get('DRF_DATABASE_USER', ''),
+    #     'PASSWORD': os.environ.get('DRF_DATABASE_PASSWORD', ''),
+    #     'HOST': os.environ.get('DRF_DATABASE_HOST', ''),
+    #     'PORT': os.environ.get('DRF_DATABASE_PORT', ''),
     # }
 
 
