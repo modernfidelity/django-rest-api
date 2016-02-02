@@ -6,9 +6,16 @@ This is a simple starting point when developing REST APIs in python using the Dj
 
 ## Install
 
+It is advisable to run any python work through [VirtualEnv](https://virtualenv.readthedocs.org/en/latest/)
+
 Clone the repo and then run the following commands. (local builds)
 
 > pip install -r ./requirements.txt
+
+For local development on Mac OSX make sure you have command line tools (otherwise Pillow install may fail) :
+
+
+> xcode-select --install
 
 ## Docker
 
@@ -55,7 +62,8 @@ docker rm -f `docker ps --no-trunc -a -q`
  - [Python Virtual Environments](https://virtualenv.readthedocs.org/en/latest/userguide.html#usage "")
  - [Standards Guide PEP8](https://www.python.org/dev/peps/pep-0008/ "")
  - [Django 1.9.x Documentation](http://media.readthedocs.org/pdf/django/1.9.x/django.pdf "")
-
+ - [Django JWT](http://getblimp.github.io/django-rest-framework-jwt "")
+ - [JWT](https://jwt.io/)
 
 
 
