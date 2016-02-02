@@ -31,5 +31,23 @@ class Event(models.Model):
         default="",
     )
 
+    #
+    def img_thumb(self):
+        """
+        Handles the thumbnail for the admin list views
+        Returns:
+
+        """
+        return u'<img width="75px" src="%s" />' % self.image.url
+
+    img_thumb.short_description = 'Image'
+    img_thumb.allow_tags = True
+
+    #
     def __str__(self):
+        """
+
+        Returns:
+
+        """
         return self.title

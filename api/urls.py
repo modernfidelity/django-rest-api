@@ -14,7 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from articles.views import ArticleViewSet
+from django.conf import settings
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
 from recipes.views import RecipeViewSet
 from rest_framework import routers
@@ -22,9 +24,9 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework_jwt.views import obtain_jwt_token
-from rest_framework_jwt.views import verify_jwt_token
 from rest_framework_jwt.views import refresh_jwt_token
-from settings import API_VERSION
+from rest_framework_jwt.views import verify_jwt_token
+from settings import API_VERSION, DEBUG
 
 
 @api_view(['GET'])
@@ -57,3 +59,7 @@ urlpatterns = [
     url(r'^api-token-refresh/', refresh_jwt_token),
 
 ]
+
+# On DEV server serve the local media files
+if DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
