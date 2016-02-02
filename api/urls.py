@@ -13,12 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from articles.views import ArticleViewSet
+
 from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
-from recipes.views import RecipeViewSet
+
 from rest_framework import routers
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
@@ -28,6 +28,9 @@ from rest_framework_jwt.views import refresh_jwt_token
 from rest_framework_jwt.views import verify_jwt_token
 from settings import API_VERSION, DEBUG
 
+from events.views import EventViewSet
+from recipes.views import RecipeViewSet
+from articles.views import ArticleViewSet
 
 @api_view(['GET'])
 @permission_classes((AllowAny,))
@@ -39,6 +42,7 @@ def get_api_version(request):
 router = routers.DefaultRouter()
 router.register(r'recipes', RecipeViewSet)
 router.register(r'articles', ArticleViewSet)
+router.register(r'events', EventViewSet)
 
 urlpatterns = [
 
