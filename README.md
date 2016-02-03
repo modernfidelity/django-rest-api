@@ -17,6 +17,18 @@ For local development on Mac OSX make sure you have command line tools (otherwis
 > xcode-select --install
 
 
+The following Environment Variables are required to be set : 
+
+ - export DRF_AWS_S3_BUCKET='__YOUR_INFO__'
+ - export DRF_AWS_ACCESS_KEY='__YOUR_INFO__'
+ - export DRF_AWS_SECRET_KEY='__YOUR_INFO__'
+
+ - export DRF_DATABASE='__YOUR_INFO__'
+ - export DRF_DB_HOST='__YOUR_INFO__'
+ - export DRF_DB_USERNAME='__YOUR_INFO__'
+ - export DRF_DB_PASSWORD='__YOUR_INFO__'
+
+
 ## AWS s3 Filesystem
 
 The application uses the following packages to store "MEDIA_ROOT" & "STATIC_ROOT" assets in the cloud : 
