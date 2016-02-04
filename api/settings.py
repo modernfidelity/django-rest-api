@@ -153,20 +153,22 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+# AMAZON S3 FILESYSTEM (@see ../custom_storages.py)
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 # STATIC_URL = '/static/'
 
 # Media Files (User Generated)
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
 
-MEDIA_URL = '/media/'
 
-# AMAZON S3
 AWS_ACCESS_KEY_ID = os.environ.get('DRF_AWS_ACCESS_KEY')
 AWS_SECRET_ACCESS_KEY = os.environ.get('DRF_AWS_SECRET_KEY')
 
@@ -179,7 +181,6 @@ AWS_S3_CUSTOM_DOMAIN = "s3-eu-west-1.amazonaws.com/%s" % AWS_STORAGE_BUCKET_NAME
 # Fixes issue with calling format (can be OrdinaryCallingFormat as well)
 # from boto.s3.connection import ProtocolIndependentOrdinaryCallingFormat
 # AWS_S3_CALLING_FORMAT = ProtocolIndependentOrdinaryCallingFormat()
-
 AWS_S3_CALLING_FORMAT = 'boto.s3.connection.OrdinaryCallingFormat'
 
 # Fixes issue with region hosting
@@ -198,11 +199,12 @@ AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'
 # STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 
+# STATIC Files
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 
-
+# MEDIA Files
 MEDIAFILES_LOCATION = 'media'
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'

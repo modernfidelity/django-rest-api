@@ -22,7 +22,6 @@ The following Environment Variables are required to be set :
  - export DRF_AWS_S3_BUCKET='__YOUR_INFO__'
  - export DRF_AWS_ACCESS_KEY='__YOUR_INFO__'
  - export DRF_AWS_SECRET_KEY='__YOUR_INFO__'
-
  - export DRF_DATABASE='__YOUR_INFO__'
  - export DRF_DB_HOST='__YOUR_INFO__'
  - export DRF_DB_USERNAME='__YOUR_INFO__'
