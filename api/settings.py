@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # CONTRIB
     'rest_framework',
     'rest_framework_swagger',
+    'django_extensions',
     'debug_toolbar',
     'storages',
     'oauth2_provider',
