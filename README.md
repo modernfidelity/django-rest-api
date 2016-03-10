@@ -37,6 +37,17 @@ The application uses the following packages to store "MEDIA_ROOT" & "STATIC_ROOT
 
 *Also the s3 bucket that will be used will need to have CORS configuration enabled.* 
 
+## OAuth2 Toolkit
+
+OAuth toolkit is installed to allow clients / users to authenticate via OAuth2. 
+
+Django OAuth Toolkit makes extensive use of the excellent [OAuthLib](https://github.com/idan/oauthlib), so that everything is [rfc-compliant](http://tools.ietf.org/html/rfc6749).
+
+Useful links : 
+
+ - [https://django-oauth-toolkit.readthedocs.org/en/latest/](https://django-oauth-toolkit.readthedocs.org/en/latest/)
+ - [http://django-extensions.readthedocs.org/en/latest/](http://django-extensions.readthedocs.org/en/latest/)
+
 ## JWT Authentication (clients)
 
 The application uses the following : [http://getblimp.github.io/django-rest-framework-jwt/#usage](http://getblimp.github.io/django-rest-framework-jwt/#usage)

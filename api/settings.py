@@ -56,6 +56,13 @@ INSTALLED_APPS = [
     'events',
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'oauth2_provider.backends.OAuth2Backend',
+    # Uncomment following if you want to access the admin
+    'django.contrib.auth.backends.ModelBackend',
+
+)
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -67,6 +74,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     # CONTRIB
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
 
@@ -161,7 +169,6 @@ USE_TZ = True
 
 # CORS
 CORS_ORIGIN_ALLOW_ALL = True
-
 
 # AMAZON S3 FILESYSTEM (@see ../custom_storages.py)
 

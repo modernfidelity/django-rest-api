@@ -1,4 +1,5 @@
-"""api URL Configuration
+"""
+api URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -31,6 +32,8 @@ from settings import API_VERSION, DEBUG
 from events.views import EventViewSet
 from recipes.views import RecipeViewSet
 from articles.views import ArticleViewSet
+from articles.views import ApiEndpoint
+
 
 @api_view(['GET'])
 @permission_classes((AllowAny,))
@@ -64,9 +67,9 @@ urlpatterns = [
 
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 
+    url(r'^api/hello', ApiEndpoint.as_view()),  # and also a resource server!
+
 ]
-
-
 
 # On DEV server serve the local media files
 if DEBUG:
