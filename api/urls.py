@@ -62,7 +62,11 @@ urlpatterns = [
     url(r'^api-token-verify/', verify_jwt_token),
     url(r'^api-token-refresh/', refresh_jwt_token),
 
+    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+
 ]
+
+
 
 # On DEV server serve the local media files
 if DEBUG:

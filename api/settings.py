@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'debug_toolbar',
     'storages',
+    'oauth2_provider',
+    'corsheaders',
 
     # CUSTOM
     'articles',
@@ -62,6 +64,9 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # CONTRIB
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 REST_FRAMEWORK = {
@@ -152,6 +157,9 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# CORS
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # AMAZON S3 FILESYSTEM (@see ../custom_storages.py)
